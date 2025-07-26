@@ -14,7 +14,7 @@ class node{
     }
 }
 
-public class binaryTree {
+public class BinbinaryTree {
     node root=null;
     public node insert(node root, int data){
         node newnode=new node(data);
@@ -74,7 +74,7 @@ class Main{
 
         int size=sc.nextInt();
 
-        binaryTree b=new binaryTree();
+        BinbinaryTree b=new BinbinaryTree();
         node root=null;
 
         for(int i=0;i<size;i++){
