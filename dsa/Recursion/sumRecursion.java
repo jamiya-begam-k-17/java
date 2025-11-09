@@ -12,15 +12,15 @@ class Main{
         sc.close();
     }
     public static int findsum(int n){
-        int sum=0;
+        //int sum=0;
         if(n<=9){
             return n;
         }
-        while(n!=0){
-            sum+=n%10;
-            n/=10;
-        }
-        return findsum(sum);
+        // while(n!=0){
+        //     sum+=n%10;
+        //     n/=10;
+        // }
+        return n%10+findsum(n/10);
     }
 
 }
