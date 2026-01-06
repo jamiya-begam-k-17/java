@@ -14,8 +14,9 @@ public class octalToDecimal {
     }
     
     public static int find(int n){
-        if(n==0) 
+        if(n==0)
         return 0;
         return n%8 + (10*find(n/8));
     }
+    
 }

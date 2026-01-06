@@ -17,33 +17,36 @@ class node{
 public class BinbinaryTree {
     node root=null;
     public node insert(node root, int data){
-        node newnode=new node(data);
+        node newnode=new node(data); // Create a new node for the data
         Queue<node>q=new LinkedList<>();
         if(root==null){
-            root=newnode;
+            root=newnode; // If the tree is empty, the root is the new node
             return root;
         }
         else{
-            q.add(root);
+            q.add(root);              // Add the root to the queue
             while(!q.isEmpty()){
-                node temp=q.poll();
+                node temp=q.poll();   // Get the first element in the queue
+
+                  // If the left child is empty, insert the new node as the left child
                 if(temp.left==null){
                     temp.left=newnode;
                     break;
                 } else{
-                    q.offer(temp.left);
+                    q.offer(temp.left);  // Otherwise, add the left child to the queue
                 }
                 if(temp.right==null){
+                    // If the right child is empty, insert the new node as the right child
                     temp.right=newnode;
                     break;
                 } else{
-                    q.offer(temp.left);
+                    q.offer(temp.left);  // Otherwise, add the right child to the queue
                 }
             }
             return root;
         }
-        
     }
+
     public void inorder(node root){
         if(root!=null){
             inorder(root.left);

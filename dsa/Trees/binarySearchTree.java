@@ -33,31 +33,43 @@ public class binarySearchTree{
         }
     }
     
-    node delete(node root,int delkey){
-        if(root==null) return null;
+    node delete(node root, int delkey) {
+    if (root == null) return null;
+    
+    if (delkey < root.data) {
+        // If the value to be deleted is smaller, recurse on the left subtree
+        root.left = delete(root.left, delkey);
+    } else if (delkey > root.data) {
+        // If the value to be deleted is greater, recurse on the right subtree
+        root.right = delete(root.right, delkey);
+    } else {
+        // If we have found the node to be deleted
+        if (root.left == null) {
+            // If the node has no left child, replace it with the right child
+            return root.right;
+        }
+        if (root.right == null) {
+            // If the node has no right child, replace it with the left child
+            return root.left;
+        }
         
-        if(delkey<root.data){
-            root.left=delete(root.left,delkey);
-        } else if(delkey>root.data){
-            root.right=delete(root.right,delkey);
-        } else{
-            if(root.left==null){
-                return root.right;
-            }
-            if(root.right==null){
-                return root.left;
-            }
-            root.data=minvalue(root.right);
-            root.right=delete(root.right,root.data);
-        }
-        return root;
+        // If the node has both children, replace it with the smallest value node from the right subtree
+        root.data = minvalue(root.right);
+        
+        // Delete the node that contained the minimum value from the right subtree
+        root.right = delete(root.right, root.data);
     }
-    private int minvalue(node nnode){
-        while(nnode.left!=null){
-            nnode=nnode.left;
+    
+    return root;  // Return the modified root node
+}
+
+    private int minvalue(node nnode) {
+        while (nnode.left != null) {
+            nnode = nnode.left;  // Keep traversing left to find the minimum value
         }
-        return nnode.data;
+        return nnode.data;  // Return the minimum value found
     }
+
 }
 class Main{
     public static void main(String[] args){

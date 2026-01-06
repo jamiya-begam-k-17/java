@@ -96,78 +96,78 @@ package Backtracking;
 //         return true;
 //     }
 // }
-// here is sudoku problem with '.' instead of 0
-// You are using Java
-import java.util.*;
-public class sudoku{
-    public static void main(String[]args){
-        Scanner sc=new Scanner(System.in);
-        char mat[][]=new char[9][9];
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                mat[i][j]=sc.next().charAt(0);
-            }
-        }
-        if(solve(mat,0,0)){
-           printmat(mat);
-        } else{
-            System.out.println("No solution exists");
-        }
-    }
-    public static void printmat(char [][] mat){
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                System.out.print(mat[i][j]+" ");
-            }
-            System.out.println();
-        }
-    }
-    public static boolean solve(char mat[][],int x,int y){
-        if(y==9){
-            x++;
-            y=0;
-        }
-        if(x==9){
-            return true;
-        }
-        if(mat[x][y]!='.'){
-            return solve(mat,x,y+1);
-        }
-        for(int i=1;i<=9;i++){
-            if(safe(mat,i,x,y)){
-                mat[x][y]=(char)(i+'0');
-                if(solve(mat,x,y+1)){
-                    return true;
-                }
-                mat[x][y]='.';//back
-            }
-        }
-        return false;
-    }
-    public static boolean safe(char[][] mat,int num,int x,int y){
+// // here is sudoku problem with '.' instead of 0
+// // You are using Java
+// import java.util.*;
+// public class sudoku{
+//     public static void main(String[]args){
+//         Scanner sc=new Scanner(System.in);
+//         char mat[][]=new char[9][9];
+//         for(int i=0;i<9;i++){
+//             for(int j=0;j<9;j++){
+//                 mat[i][j]=sc.next().charAt(0);
+//             }
+//         }
+//         if(solve(mat,0,0)){
+//             printmat(mat);
+//         } else{
+//             System.out.println("No solution exists");
+//         }
+//     }
+//     public static void printmat(char [][] mat){
+//         for(int i=0;i<9;i++){
+//             for(int j=0;j<9;j++){
+//                 System.out.print(mat[i][j]+" ");
+//             }
+//             System.out.println();
+//         }
+//     }
+//     public static boolean solve(char mat[][],int x,int y){
+//         if(y==9){
+//             x++;
+//             y=0;
+//         }
+//         if(x==9){
+//             return true;
+//         }
+//         if(mat[x][y]!='.'){
+//             return solve(mat,x,y+1);
+//         }
+//         for(int i=1;i<=9;i++){
+//             if(safe(mat,i,x,y)){
+//                 mat[x][y]=(char)(i+'0');
+//                 if(solve(mat,x,y+1)){
+//                     return true;
+//                 }
+//                 mat[x][y]='.';//back
+//             }
+//         }
+//         return false;
+//     }
+//     public static boolean safe(char[][] mat,int num,int x,int y){
         
-        char c=(char)(num+'0');
-        for(int i=0;i<9;i++){
-            if(mat[x][i]==c){
-                return false;
-            }
-        }
-        for(int i=0;i<9;i++){
-            if(mat[i][y]==c){
-                return false;
-            }
-        }
+//         char c=(char)(num+'0');
+//         for(int i=0;i<9;i++){
+//             if(mat[x][i]==c){
+//                 return false;
+//             }
+//         }
+//         for(int i=0;i<9;i++){
+//             if(mat[i][y]==c){
+//                 return false;
+//             }
+//         }
         
-        int row=x-x%3;
-        int col=y-y%3;
+//         int row=x-x%3;
+//         int col=y-y%3;
         
-        for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++){
-                if(mat[row+i][col+j]==c){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-}
+//         for(int i=0;i<3;i++){
+//             for(int j=0;j<3;j++){
+//                 if(mat[row+i][col+j]==c){
+//                     return false;
+//                 }
+//             }
+//         }
+//         return true;
+//     }
+// }
